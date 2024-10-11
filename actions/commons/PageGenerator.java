@@ -2,6 +2,7 @@ package commons;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.devtools.v85.page.Page;
+import pageObjects.DashboardPageObject;
 import pageObjects.LoginPageObject;
 
 public class PageGenerator {
@@ -14,4 +15,7 @@ public class PageGenerator {
         return new LoginPageObject(driver);
     }
 
+    public static DashboardPageObject getDashboardPageObject(WebDriver driver) {
+        return new DashboardPageObject(driver);
+    }
 }
