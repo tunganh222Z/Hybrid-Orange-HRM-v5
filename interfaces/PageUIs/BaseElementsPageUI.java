@@ -9,4 +9,6 @@ public class BaseElementsPageUI {
     public static final String DYNAMIC_BUTTON_BY_NAME = "xpath=//button[contains(@class,'oxd-button') and contains(string(),'%s')]";
     public static final String DYNAMIC_TOAST_MESSAGE_BY_TEXT = "xpath=//p[contains(@class,'oxd-text--toast-message') and text()='%s']";
     public static final String EMPLOYEE_ID_TEXTBOX = "xpath=//label[text()='Employee Id']/parent::div/following-sibling::div/input";
+    public static final String SPINNER_ICON = "xpath=//div[@class='oxd-loading-spinner-container']";
+    public static final String DYNAMIC_TEXTBOX_TO_SEARCH_BY_NAME = "xpath=//label[text()='%s']/ancestor::div[contains(@class,'oxd-input-group')]//input";
 }

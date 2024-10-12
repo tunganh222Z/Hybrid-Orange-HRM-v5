@@ -218,6 +218,10 @@ public class BasePage {
         return getWebElement(driver, locator).getAttribute(attributeName);
     }
 
+    public String getWebElementAttribute(WebDriver driver, String locator, String attributeName, String... restParam) {
+        return getWebElement(driver, getDynamicLocator(locator, restParam)).getAttribute(attributeName);
+    }
+
     public String getWebElementCssValue(WebDriver driver, String locator, String cssPropertyName) {
         return getWebElement(driver, locator).getCssValue(cssPropertyName);
     }

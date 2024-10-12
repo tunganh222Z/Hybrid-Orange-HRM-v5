@@ -1,7 +1,6 @@
 package commons;
 
 import PageUIs.BaseElementsPageUI;
-import graphql.Assert;
 import org.openqa.selenium.WebDriver;
 
 public class BaseElements extends BasePage {
@@ -36,13 +35,22 @@ public class BaseElements extends BasePage {
         return getWebElement(driver, BaseElementsPageUI.DYNAMIC_TOAST_MESSAGE_BY_TEXT, textMessage).isDisplayed();
     }
 
-    public String getTextBoxValueByName(String name) {
+    public String getTextBoxValueByName(String name, String attributeName) {
         waitForElementVisible(driver, BaseElementsPageUI.DYNAMIC_TEXTBOX_BY_NAME, name);
-        return getWebElementText(driver, BaseElementsPageUI.DYNAMIC_TEXTBOX_BY_NAME, name);
+        return getWebElementAttribute(driver, BaseElementsPageUI.DYNAMIC_TEXTBOX_BY_NAME, attributeName, name);
     }
 
     public String getEmployeeID(String attributeName) {
-        waitForElementInvisible(driver, BaseElementsPageUI.EMPLOYEE_ID_TEXTBOX);
+        waitForElementVisible(driver, BaseElementsPageUI.EMPLOYEE_ID_TEXTBOX);
         return getWebElementAttribute(driver, BaseElementsPageUI.EMPLOYEE_ID_TEXTBOX, attributeName);
+    }
+
+    public void waitSpinnerIconInvisible(){
+        waitForListElementsInvisible(driver, BaseElementsPageUI.SPINNER_ICON);
+    }
+
+    public void entertoTextBoxToSearch(String name, String keyToSend) {
+        waitForElementVisible(driver, BaseElementsPageUI.DYNAMIC_TEXTBOX_TO_SEARCH_BY_NAME,name);
+        sendkeyToElement(driver, BaseElementsPageUI.DYNAMIC_TEXTBOX_TO_SEARCH_BY_NAME, keyToSend, name);
     }
 }
