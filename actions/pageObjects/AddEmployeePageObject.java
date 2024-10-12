@@ -1,5 +1,7 @@
 package pageObjects;
 
+import PageUIs.AddEmployeePageUI;
+import PageUIs.BaseElementsPageUI;
 import commons.BaseElements;
 import org.openqa.selenium.WebDriver;
 
@@ -11,6 +13,5 @@ public class AddEmployeePageObject extends BaseElements {
         this.driver = driver;
     }
 
-    public void isSucessSavedMessageDisplayed() {
-    }
+
 }

@@ -31,5 +31,6 @@ public class PageGenerator {
     }
 
     public static EmployeeListPageObject getEmployeeListPageObject(WebDriver driver) {
+        return new EmployeeListPageObject(driver);
     }
 }

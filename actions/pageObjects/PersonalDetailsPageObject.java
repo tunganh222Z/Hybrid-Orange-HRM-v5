@@ -10,14 +10,4 @@ public class PersonalDetailsPageObject extends BaseElements {
         super(driver);
         this.driver = driver;
     }
-
-    public int getFirstNameValue() {
-    }
-
-    public byte[] getLastNameValue() {
-    }
-
-    public byte[] getEmployeeValue() {
-        return null;
-    }
 }

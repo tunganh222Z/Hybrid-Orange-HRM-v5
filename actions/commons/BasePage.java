@@ -131,6 +131,10 @@ public class BasePage {
         return driver.findElement(getByLocator(locator));
     }
 
+    public WebElement getWebElement(WebDriver driver, String locator, String... restParam) {
+        return driver.findElement(getByLocator(getDynamicLocator(locator,restParam)));
+    }
+
     public List<WebElement> getListWebElements(WebDriver driver, String locator) {
         return driver.findElements(getByLocator(locator));
     }
