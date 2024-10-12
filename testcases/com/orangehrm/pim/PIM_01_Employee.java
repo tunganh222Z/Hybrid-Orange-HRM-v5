@@ -4,7 +4,6 @@ import commons.BaseTest;
 import commons.GlobalConstant;
 import commons.PageGenerator;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.devtools.v85.page.Page;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
@@ -22,12 +21,21 @@ public class PIM_01_Employee extends BaseTest {
     private EmployeeListPageObject employeeListPage;
     private AddEmployeePageObject addEmployeePage;
     private PersonalDetailsPageObject personalDetailsPage;
-    private String employeeID, firstName, lastName;
+    private String employeeID, firstName, lastName, driverLicenseNumber, licenseEXPDate, dateOfBirth, maritalStatus, nationality, gender;
 
     @Parameters ({"url","browser"})
     @BeforeClass
     public void beforeClass(String url, String browserName){
         driver = getBrowserDriver(browserName, url);
+        firstName = "Tung";
+        lastName = "Anh";
+        driverLicenseNumber ="DL123486784";
+        licenseEXPDate ="2025-10-20";
+        dateOfBirth ="1997-09-09";
+        maritalStatus ="Married";
+        nationality ="Vietnamese";
+        gender ="Male";
+
         loginPage = PageGenerator.getLoginPage(driver);
 
         loginPage.enterToTextBoxByName("username", GlobalConstant.ADMIN_ID);
@@ -49,13 +57,9 @@ public class PIM_01_Employee extends BaseTest {
         employeeListPage.waitSpinnerIconInvisible();
         addEmployeePage = PageGenerator.getAddEmployeePageObject(driver);
 
-        firstName = "Tung";
-        lastName = "Anh";
-
         addEmployeePage.enterToTextBoxByName("firstName", firstName);
         addEmployeePage.enterToTextBoxByName("lastName", lastName);
         employeeID = addEmployeePage.getEmployeeID("value");
-        System.out.println(employeeID);
 
         addEmployeePage.clickToButtonByText("Save");
         Assert.assertTrue(addEmployeePage.isSucessMessageByText("Successfully Saved"));
@@ -83,6 +87,29 @@ public class PIM_01_Employee extends BaseTest {
 
     @Test
     public void Employee_02_Personal_Details(){
+        personalDetailsPage = employeeListPage.clickToEditButtonByEmployeeId(employeeID);
+
+        Assert.assertEquals(personalDetailsPage.getTextBoxValueByName("firstName", "value"), firstName);
+        Assert.assertEquals(personalDetailsPage.getTextBoxValueByName("lastName", "value"), lastName);
+        Assert.assertEquals(personalDetailsPage.getEmployeeID("value"), employeeID);
+
+
+        personalDetailsPage.enterToLicenseNumberTextbox(driverLicenseNumber);
+
+        personalDetailsPage.enterToDatePickerByLabel("License Expiry Date", licenseEXPDate);
+
+        personalDetailsPage.selectDropdownByLabel("Nationality", nationality);
+
+        personalDetailsPage.selectDropdownByLabel("Marital Status",maritalStatus);
+
+        personalDetailsPage.enterToDatePickerByLabel("Date of Birth", dateOfBirth);
+
+        personalDetailsPage.clickToRadioButtonByLabel(gender);
+
+        personalDetailsPage.clickToButtonByText("Save");
+
+        Assert.assertTrue(addEmployeePage.isSucessMessageByText("Successfully Updated"));
+        addEmployeePage.waitSpinnerIconInvisible();
 
     }
 

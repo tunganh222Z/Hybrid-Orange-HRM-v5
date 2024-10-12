@@ -2,6 +2,9 @@ package commons;
 
 import PageUIs.BaseElementsPageUI;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import java.util.List;
 
 public class BaseElements extends BasePage {
     WebDriver driver;
@@ -52,5 +55,30 @@ public class BaseElements extends BasePage {
     public void entertoTextBoxToSearch(String name, String keyToSend) {
         waitForElementVisible(driver, BaseElementsPageUI.DYNAMIC_TEXTBOX_TO_SEARCH_BY_NAME,name);
         sendkeyToElement(driver, BaseElementsPageUI.DYNAMIC_TEXTBOX_TO_SEARCH_BY_NAME, keyToSend, name);
+    }
+
+    public void enterToDatePickerByLabel(String label, String keyToSend) {
+        waitForElementVisible(driver, BaseElementsPageUI.DYNAMIC_DATE_PICKER_BY_LABEL, label);
+        sendkeyToElement(driver, BaseElementsPageUI.DYNAMIC_DATE_PICKER_BY_LABEL, keyToSend, label);
+    }
+
+    public void selectDropdownByLabel(String label, String expectedOption) {
+        selectItemInCustomDropdown(driver,BaseElementsPageUI.DYNAMIC_DROPDOWN_BY_LABEL,BaseElementsPageUI.DYNAMIC_DROPDOWN_SELECT_OPTIONS_BY_LABEL, expectedOption, label);
+//        waitForElementClickable(driver, BaseElementsPageUI.DYNAMIC_DROPDOWN_BY_LABEL, label);
+//        clickToElement(driver, BaseElementsPageUI.DYNAMIC_DROPDOWN_BY_LABEL, label);
+//
+//        waitForListElementsVisible(driver, BaseElementsPageUI.DYNAMIC_DROPDOWN_SELECT_OPTIONS_BY_LABEL, label);
+//        List<WebElement> selectOptions = getListWebElements(driver, BaseElementsPageUI.DYNAMIC_DROPDOWN_SELECT_OPTIONS_BY_LABEL, label);
+//        for (WebElement option : selectOptions){
+//            if (option.getText().equals(expectedOption)){
+//                option.click();
+//                break;
+//            }
+//        }
+
+    }
+
+    public void clickToRadioButtonByLabel(String label) {
+        clickToElementByJS(driver, BaseElementsPageUI.DYNAMIC_RADIO_BUTTON_BY_LABEL, label);
     }
 }

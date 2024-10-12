@@ -206,6 +206,18 @@ public class BasePage {
         }
     }
 
+    public void selectItemInCustomDropdown(WebDriver driver, String parentLocator, String childLocator, String expectedText, String... restParam) {
+        getWebElement(driver, getDynamicLocator(parentLocator, restParam)).click();
+        sleepInSecond(1);
+        new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.presenceOfAllElementsLocatedBy(getByLocator(getDynamicLocator(childLocator, restParam))));
+        for (WebElement Item : getListWebElements(driver, getDynamicLocator(childLocator, restParam))) {
+            if (Item.getText().equals(expectedText)) {
+                Item.click();
+                break;
+            }
+        }
+    }
+
     public String getWebElementText(WebDriver driver, String locator) {
         return getWebElement(driver, locator).getText();
     }
@@ -366,6 +378,11 @@ public class BasePage {
         sleepInSecond(3);
     }
 
+    public void clickToElementByJS(WebDriver driver, String locator, String restParam) {
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", getWebElement(driver, getDynamicLocator(locator, restParam)));
+        sleepInSecond(3);
+    }
+
     public void scrollToElementOnTop(WebDriver driver, String locator) {
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", getWebElement(driver, locator));
     }
@@ -418,6 +435,10 @@ public class BasePage {
 
     public void waitForListElementsVisible(WebDriver driver, String locator, String... restParams) {
         new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(getByLocator(getDynamicLocator(locator, restParams))));
+    }
+
+    public void waitForDropdownOptionsVisible (WebDriver driver, String locator, String... restParams){
+        new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.presenceOfAllElementsLocatedBy(getByLocator(getDynamicLocator(locator, restParams))));
     }
 
     public void waitForElementInvisible(WebDriver driver, String locator) {

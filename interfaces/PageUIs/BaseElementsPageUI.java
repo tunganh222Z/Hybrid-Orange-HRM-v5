@@ -11,4 +11,8 @@ public class BaseElementsPageUI {
     public static final String EMPLOYEE_ID_TEXTBOX = "xpath=//label[text()='Employee Id']/parent::div/following-sibling::div/input";
     public static final String SPINNER_ICON = "xpath=//div[@class='oxd-loading-spinner-container']";
     public static final String DYNAMIC_TEXTBOX_TO_SEARCH_BY_NAME = "xpath=//label[text()='%s']/ancestor::div[contains(@class,'oxd-input-group')]//input";
+    public static final String DYNAMIC_DATE_PICKER_BY_LABEL = "Xpath=//label[contains(text(),'%s')]/parent::div/following-sibling::div//input";
+    public static final String DYNAMIC_DROPDOWN_BY_LABEL = "xpath=//label[text()='%s']/parent::div/following-sibling::div/div[@class='oxd-select-wrapper']";
+    public static final String DYNAMIC_DROPDOWN_SELECT_OPTIONS_BY_LABEL = "xpath=//label[text()='%s']/parent::div/following-sibling::div//div[@role='option']";
+    public static final String DYNAMIC_RADIO_BUTTON_BY_LABEL = "xpath=//label[contains(string(),'%s')]/span/preceding-sibling::input";
 }
