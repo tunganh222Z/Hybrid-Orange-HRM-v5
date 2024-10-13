@@ -21,6 +21,7 @@ public class PIM_01_Employee extends BaseTest {
     private EmployeeListPageObject employeeListPage;
     private AddEmployeePageObject addEmployeePage;
     private PersonalDetailsPageObject personalDetailsPage;
+    private ContactDetailsPageObject contactDetailsPage;
     private String employeeID, firstName, lastName, driverLicenseNumber, licenseEXPDate, dateOfBirth, maritalStatus, nationality, gender;
 
     @Parameters ({"url","browser"})
@@ -115,6 +116,32 @@ public class PIM_01_Employee extends BaseTest {
 
     @Test
     public void Employee_03_Contact_Details(){
+
+        contactDetailsPage.enterToStreet1Textbox("");
+
+        contactDetailsPage.enterToStreet2Textbox("");
+
+        contactDetailsPage.enterToCityTextbox("");
+
+        contactDetailsPage.enterToStateProvinceTextbox("");
+
+        contactDetailsPage.enterToZipPostalCodeTextbox("");
+
+        contactDetailsPage.selectCountryDropdown("");
+
+        contactDetailsPage.enterToHomeTextbox("");
+
+        contactDetailsPage.enterToMobileTextbox("");
+
+        contactDetailsPage.enterToWorkTextbox("");
+
+        contactDetailsPage.enterToEmailWorkTextbox("");
+
+        contactDetailsPage.enterToOtherEmailTextbox("");
+
+        contactDetailsPage.clickToButtonByText("Save");
+        Assert.assertTrue(addEmployeePage.isSucessMessageByText("Successfully Updated"));
+        addEmployeePage.waitSpinnerIconInvisible();
 
     }
 
