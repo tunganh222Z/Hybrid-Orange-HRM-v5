@@ -28,4 +28,5 @@ public class PersonalDetailsPageObject extends BaseElements {
 
     public void clickToSmockerCheckButton() {
     }
+
 }

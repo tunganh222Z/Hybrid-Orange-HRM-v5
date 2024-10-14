@@ -81,4 +81,9 @@ public class BaseElements extends BasePage {
     public void clickToRadioButtonByLabel(String label) {
         clickToElementByJS(driver, BaseElementsPageUI.DYNAMIC_RADIO_BUTTON_BY_LABEL, label);
     }
+
+    public void clickToEmployeeNavigationByLabel(String label) {
+        waitForElementVisible(driver, BaseElementsPageUI.DYNAMIC_EMPLOYEE_NAVIGATION_BY_LABEL, label);
+        clickToElement(driver, BaseElementsPageUI.DYNAMIC_EMPLOYEE_NAVIGATION_BY_LABEL, label);
+    }
 }

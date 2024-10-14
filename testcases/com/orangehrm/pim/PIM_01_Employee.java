@@ -23,6 +23,7 @@ public class PIM_01_Employee extends BaseTest {
     private PersonalDetailsPageObject personalDetailsPage;
     private ContactDetailsPageObject contactDetailsPage;
     private String employeeID, firstName, lastName, driverLicenseNumber, licenseEXPDate, dateOfBirth, maritalStatus, nationality, gender;
+    private String street1, street2, city, stateProvince, zipPostalCode, home, mobile, work, workEmail, otherEmail, country;
 
     @Parameters ({"url","browser"})
     @BeforeClass
@@ -36,6 +37,17 @@ public class PIM_01_Employee extends BaseTest {
         maritalStatus ="Married";
         nationality ="Vietnamese";
         gender ="Male";
+        street1 ="Ha Dong island";
+        street2 ="Xa la Ha Dong";
+        city ="Ha Dong";
+        stateProvince ="Ha Noi";
+        zipPostalCode ="PS0198387";
+        home = "Mau luong provip";
+        mobile = "07373294902";
+        work = "timecity central";
+        workEmail = "workEmail@gmail.com";
+        otherEmail = "otherEmail@gmail.com";
+        country = "Viet Nam";
 
         loginPage = PageGenerator.getLoginPage(driver);
 
@@ -110,34 +122,37 @@ public class PIM_01_Employee extends BaseTest {
         personalDetailsPage.clickToButtonByText("Save");
 
         Assert.assertTrue(addEmployeePage.isSucessMessageByText("Successfully Updated"));
-        addEmployeePage.waitSpinnerIconInvisible();
+        personalDetailsPage.waitSpinnerIconInvisible();
+        personalDetailsPage.clickToEmployeeNavigationByLabel("Contact Details");
+        contactDetailsPage = PageGenerator.getContactDetailsPageObject(driver);
+        contactDetailsPage.waitSpinnerIconInvisible();
 
     }
 
     @Test
     public void Employee_03_Contact_Details(){
 
-        contactDetailsPage.enterToStreet1Textbox("");
+        contactDetailsPage.enterToStreet1Textbox(street1);
 
-        contactDetailsPage.enterToStreet2Textbox("");
+        contactDetailsPage.enterToStreet2Textbox(street2);
 
-        contactDetailsPage.enterToCityTextbox("");
+        contactDetailsPage.enterToCityTextbox(city);
 
-        contactDetailsPage.enterToStateProvinceTextbox("");
+        contactDetailsPage.enterToStateProvinceTextbox(stateProvince);
 
-        contactDetailsPage.enterToZipPostalCodeTextbox("");
+        contactDetailsPage.enterToZipPostalCodeTextbox(zipPostalCode);
 
-        contactDetailsPage.selectCountryDropdown("");
+        contactDetailsPage.selectCountryDropdown(nationality);
 
-        contactDetailsPage.enterToHomeTextbox("");
+        contactDetailsPage.enterToHomeTextbox(home);
 
-        contactDetailsPage.enterToMobileTextbox("");
+        contactDetailsPage.enterToMobileTextbox(mobile);
 
-        contactDetailsPage.enterToWorkTextbox("");
+        contactDetailsPage.enterToWorkTextbox(work);
 
-        contactDetailsPage.enterToEmailWorkTextbox("");
+        contactDetailsPage.enterToEmailWorkTextbox(workEmail);
 
-        contactDetailsPage.enterToOtherEmailTextbox("");
+        contactDetailsPage.enterToOtherEmailTextbox(otherEmail);
 
         contactDetailsPage.clickToButtonByText("Save");
         Assert.assertTrue(addEmployeePage.isSucessMessageByText("Successfully Updated"));

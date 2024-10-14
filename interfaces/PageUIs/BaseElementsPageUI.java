@@ -15,4 +15,5 @@ public class BaseElementsPageUI {
     public static final String DYNAMIC_DROPDOWN_BY_LABEL = "xpath=//label[text()='%s']/parent::div/following-sibling::div/div[@class='oxd-select-wrapper']";
     public static final String DYNAMIC_DROPDOWN_SELECT_OPTIONS_BY_LABEL = "xpath=//label[text()='%s']/parent::div/following-sibling::div//div[@role='option']";
     public static final String DYNAMIC_RADIO_BUTTON_BY_LABEL = "xpath=//label[contains(string(),'%s')]/span/preceding-sibling::input";
+    public static final String DYNAMIC_EMPLOYEE_NAVIGATION_BY_LABEL = "xpath=//a[text()='%s']";
 }
