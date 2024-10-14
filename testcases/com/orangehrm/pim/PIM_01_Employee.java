@@ -22,6 +22,7 @@ public class PIM_01_Employee extends BaseTest {
     private AddEmployeePageObject addEmployeePage;
     private PersonalDetailsPageObject personalDetailsPage;
     private ContactDetailsPageObject contactDetailsPage;
+    private EmergencyContactsPageObject emergencyPage;
     private String employeeID, firstName, lastName, driverLicenseNumber, licenseEXPDate, dateOfBirth, maritalStatus, nationality, gender;
     private String street1, street2, city, stateProvince, zipPostalCode, home, mobile, work, workEmail, otherEmail, country;
 
@@ -42,9 +43,9 @@ public class PIM_01_Employee extends BaseTest {
         city ="Ha Dong";
         stateProvince ="Ha Noi";
         zipPostalCode ="PS0198387";
-        home = "Mau luong provip";
+        home = "0376263893";
         mobile = "07373294902";
-        work = "timecity central";
+        work = "099384892-";
         workEmail = "workEmail@gmail.com";
         otherEmail = "otherEmail@gmail.com";
         country = "Viet Nam";
@@ -121,12 +122,14 @@ public class PIM_01_Employee extends BaseTest {
 
         personalDetailsPage.clickToButtonByText("Save");
 
+
+
         Assert.assertTrue(addEmployeePage.isSucessMessageByText("Successfully Updated"));
         personalDetailsPage.waitSpinnerIconInvisible();
+
         personalDetailsPage.clickToEmployeeNavigationByLabel("Contact Details");
         contactDetailsPage = PageGenerator.getContactDetailsPageObject(driver);
         contactDetailsPage.waitSpinnerIconInvisible();
-
     }
 
     @Test
@@ -155,13 +158,33 @@ public class PIM_01_Employee extends BaseTest {
         contactDetailsPage.enterToOtherEmailTextbox(otherEmail);
 
         contactDetailsPage.clickToButtonByText("Save");
-        Assert.assertTrue(addEmployeePage.isSucessMessageByText("Successfully Updated"));
-        addEmployeePage.waitSpinnerIconInvisible();
+        Assert.assertTrue(contactDetailsPage.isSucessMessageByText("Successfully Updated"));
+        contactDetailsPage.waitSpinnerIconInvisible();
+
+        contactDetailsPage.clickToEmployeeNavigationByLabel("Emergency Contacts");
+        emergencyPage = PageGenerator.getEmergencyContactsPage(driver);
 
     }
 
     @Test
     public void Employee_04_Emergency_Contacts(){
+        emergencyPage.clickToAddEmergenyContacts();
+
+        emergencyPage.enterToNameTextbox("");
+
+        emergencyPage.enterToRelationshipTextbox("");
+
+        emergencyPage.enterToHomeTelephoneTextbox("");
+
+        emergencyPage.enterToMobileTextbox("");
+
+        emergencyPage.enterToWorkTelephoneTextbox("");
+
+        emergencyPage.clickToButtonByText("Save");
+        Assert.assertTrue(emergencyPage.isSucessMessageByText("Successfully Updated"));
+        emergencyPage.waitSpinnerIconInvisible();
+
+
 
     }
 
