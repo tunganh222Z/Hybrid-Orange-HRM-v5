@@ -17,10 +17,6 @@ public class BaseElements extends BasePage {
         sendkeyToElement(driver, BaseElementsPageUI.DYNAMIC_TEXTBOX_BY_NAME,keyToSend, name);
     }
 
-    public void openModuleByText(String name){
-        waitForElementClickable(driver, BaseElementsPageUI.DYNAMIC_MODULE_BY_NAME,name);
-        clickToElement(driver, BaseElementsPageUI.DYNAMIC_MODULE_BY_NAME,name);
-    }
 
     public void clickToTopBarButtonByText(String name) {
         waitForElementClickable(driver, BaseElementsPageUI.DYNAMIC_TOP_BAR_LINK_BY_NAME,name );
@@ -82,8 +78,5 @@ public class BaseElements extends BasePage {
         clickToElementByJS(driver, BaseElementsPageUI.DYNAMIC_RADIO_BUTTON_BY_LABEL, label);
     }
 
-    public void clickToEmployeeNavigationByLabel(String label) {
-        waitForElementVisible(driver, BaseElementsPageUI.DYNAMIC_EMPLOYEE_NAVIGATION_BY_LABEL, label);
-        clickToElement(driver, BaseElementsPageUI.DYNAMIC_EMPLOYEE_NAVIGATION_BY_LABEL, label);
-    }
+
 }

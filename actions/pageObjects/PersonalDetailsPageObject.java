@@ -1,11 +1,9 @@
 package pageObjects;
 
 import PageUIs.PersonalDetailsPageUI;
-import commons.BaseElements;
-import commons.BasePage;
 import org.openqa.selenium.WebDriver;
 
-public class PersonalDetailsPageObject extends BaseElements {
+public class PersonalDetailsPageObject extends EmployeeNavigationSidebarPageObject {
     WebDriver driver;
     public PersonalDetailsPageObject(WebDriver driver){
         super(driver);
@@ -17,16 +15,5 @@ public class PersonalDetailsPageObject extends BaseElements {
         sendkeyToElement(driver, PersonalDetailsPageUI.LICENSE_TEXTBOX, keytToSend);
     }
 
-    public void selectToNationalityDropdown(String s) {
-    }
-
-    public void selectToMarialStatusDropdown(String s) {
-    }
-
-    public void clickToMaleRadioButton(String s) {
-    }
-
-    public void clickToSmockerCheckButton() {
-    }
 
 }

@@ -8,7 +8,7 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-public class EmployeeListPageObject extends BaseElements {
+public class EmployeeListPageObject extends MainMenuPageObject {
     WebDriver driver;
     public EmployeeListPageObject(WebDriver driver){
         super(driver);

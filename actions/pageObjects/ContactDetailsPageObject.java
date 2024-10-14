@@ -4,7 +4,7 @@ import PageUIs.ContactDetailsPageUI;
 import commons.BaseElements;
 import org.openqa.selenium.WebDriver;
 
-public class ContactDetailsPageObject extends BaseElements {
+public class ContactDetailsPageObject extends EmployeeNavigationSidebarPageObject {
     WebDriver driver;
     public ContactDetailsPageObject(WebDriver driver) {
         super(driver);
