@@ -45,4 +45,20 @@ public class PageGenerator {
     public static ImmigrationPageObject getImmigrationPage(WebDriver driver) {
         return new ImmigrationPageObject(driver);
     }
+
+    public static JobPageObject getJobPage(WebDriver driver) {
+        return new JobPageObject(driver);
+    }
+
+    public static SalaryPageObject getSalaryPage(WebDriver driver) {
+        return new SalaryPageObject(driver);
+    }
+
+    public static ReportToPageObject getReportToPage(WebDriver driver) {
+        return new ReportToPageObject(driver);
+    }
+
+    public static QualificationsPageObject getQualificationsPage(WebDriver driver) {
+        return new QualificationsPageObject(driver);
+    }
 }
