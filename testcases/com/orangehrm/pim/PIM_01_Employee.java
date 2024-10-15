@@ -24,9 +24,11 @@ public class PIM_01_Employee extends BaseTest {
     private ContactDetailsPageObject contactDetailsPage;
     private EmergencyContactsPageObject emergencyPage;
     private DependentsPageObject dependentsPage;
+    private ImmigrationPageObject immigrationPage;
     private String employeeID, firstName, lastName, driverLicenseNumber, licenseEXPDate, dateOfBirth, maritalStatus, nationality, gender;
     private String street1, street2, city, stateProvince, zipPostalCode, home, mobile, work, workEmail, otherEmail, country;
     private String emergencyName,emergencyRelationship, emergencyHomeTelephone, emergencyMobile, emergencyWorkTelephone;
+    private String dependentsName, dependentRelationship, dependentDateofBirth;
 
     @Parameters ({"url","browser"})
     @BeforeClass
@@ -56,6 +58,9 @@ public class PIM_01_Employee extends BaseTest {
         emergencyHomeTelephone = "091239509832";
         emergencyMobile = "987989200";
         emergencyWorkTelephone = "091823908";
+        dependentsName = "VanMini";
+        dependentRelationship = "Child";
+        dependentDateofBirth = "2024-09-09";
 
         loginPage = PageGenerator.getLoginPage(driver);
 
@@ -201,6 +206,21 @@ public class PIM_01_Employee extends BaseTest {
     @Test
     public void Employee_05_Dependents(){
 
+        dependentsPage.clickToButtonByText("Add");
+
+        dependentsPage.enterToNameTextBox(dependentsName);
+
+        dependentsPage.selectRelationShipDropdown(dependentRelationship);
+
+        dependentsPage.enterToDoBTextbox(dependentDateofBirth);
+
+        dependentsPage.clickToButtonByText("Save");
+        Assert.assertTrue(dependentsPage.isSucessMessageByText("Successfully Saved"));
+        dependentsPage.waitSpinnerIconInvisible();
+
+        dependentsPage.clickToEmployeeNavigationByLabel("Immigration");
+        immigrationPage = PageGenerator.getImmigrationPage(driver);
+        immigrationPage.waitSpinnerIconInvisible();
     }
 
     @Test

@@ -41,4 +41,8 @@ public class PageGenerator {
     public static DependentsPageObject getDependentsPage(WebDriver driver) {
         return new DependentsPageObject(driver);
     }
+
+    public static ImmigrationPageObject getImmigrationPage(WebDriver driver) {
+        return new ImmigrationPageObject(driver);
+    }
 }
