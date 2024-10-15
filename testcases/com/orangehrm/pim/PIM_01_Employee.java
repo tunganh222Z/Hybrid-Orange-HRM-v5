@@ -25,10 +25,18 @@ public class PIM_01_Employee extends BaseTest {
     private EmergencyContactsPageObject emergencyPage;
     private DependentsPageObject dependentsPage;
     private ImmigrationPageObject immigrationPage;
+    private JobPageObject jobPage;
+    private SalaryPageObject salaryPage;
+    private ReportToPageObject reportToPage;
+    private QualificationsPageObject qualificationsPage;
     private String employeeID, firstName, lastName, driverLicenseNumber, licenseEXPDate, dateOfBirth, maritalStatus, nationality, gender;
     private String street1, street2, city, stateProvince, zipPostalCode, home, mobile, work, workEmail, otherEmail, country;
     private String emergencyName,emergencyRelationship, emergencyHomeTelephone, emergencyMobile, emergencyWorkTelephone;
     private String dependentsName, dependentRelationship, dependentDateofBirth;
+    private String passportNumber, issuedDate, expiryDate, eligibleStatus, issuedBy, eligibleReviewDate, immigrationComments;
+    private String joinedDate, jobTitle, jobCategory, employmentStatus, terminateDate, terminateNote, terminateReason;
+    private String salaryComponent, payGrade, payFrequency, currency, amount, directDepositAmount, accountNumber, routingNumber, accountType;
+    private String level, institute, majorSpecialization, yearEducation, gpaScore, startEducationDate, endEducationDate,company, expFromDate, expToDate;
 
     @Parameters ({"url","browser"})
     @BeforeClass
@@ -61,6 +69,39 @@ public class PIM_01_Employee extends BaseTest {
         dependentsName = "VanMini";
         dependentRelationship = "Child";
         dependentDateofBirth = "2024-09-09";
+        passportNumber = "PP9832904823";
+        issuedDate = "2023-12-09";
+        expiryDate = "2026-10-08";
+        eligibleStatus = "Eligibled";
+        issuedBy = "Viet Name";
+        eligibleReviewDate = "2024-10-15";
+        immigrationComments = "dau cat moi \n moi cat dau";
+        joinedDate= "2023-01-03";
+        jobTitle= "Tester";
+        jobCategory= "Technicians";
+        employmentStatus= "Employment status";
+        terminateDate= "2024-10-17";
+        terminateNote= "lam an chan \n khong ra gi";
+        terminateReason= "Laid-off";
+        salaryComponent ="Money";
+        payGrade="Paygrade";
+        payFrequency="Monthly";
+        currency="United States Dollar";
+        amount="17000";
+        directDepositAmount="5000";
+        accountNumber="DTN9812938";
+        routingNumber="92716382";
+        accountType="Checking";
+        level= "Level education";
+        institute= "Chicken";
+        majorSpecialization="chem gio";
+        yearEducation="2015";
+        gpaScore="3.2";
+        startEducationDate="2023-09-09";
+        endEducationDate="2024-03-10";
+        company = "cong ty xi nha coi";
+        expFromDate = "2023-11-10";
+        expToDate = "2024-04-10";
 
         loginPage = PageGenerator.getLoginPage(driver);
 
@@ -225,27 +266,132 @@ public class PIM_01_Employee extends BaseTest {
 
     @Test
     public void Employee_06_Immigration(){
+        immigrationPage.clickToButtonByText("Add");
 
+        immigrationPage.clickToRadioButtonByLabel("Passport");
+
+        immigrationPage.enterToNumberTextbox(passportNumber);
+        immigrationPage.enterToIssuedDateTextbox(issuedDate);
+        immigrationPage.enterToExpiryDateTextbox(expiryDate);
+        immigrationPage.enterToEligibleStatusTextbox(eligibleStatus);
+        immigrationPage.selectIssuedByDropdown(issuedBy);
+        immigrationPage.selectEligibleReviewDateDropdown(eligibleReviewDate);
+        immigrationPage.enterToCommentsTextArea(immigrationComments);
+
+        immigrationPage.clickToButtonByText("Save");
+        Assert.assertTrue(immigrationPage.isSucessMessageByText("Successfully Saved"));
+        immigrationPage.waitSpinnerIconInvisible();
+
+        immigrationPage.clickToEmployeeNavigationByLabel("Job");
+        jobPage = PageGenerator.getJobPage(driver);
+        jobPage.waitSpinnerIconInvisible();
     }
 
     @Test
     public void Employee_07_Job(){
+        jobPage.enterToJoinedDateTextbox(joinedDate);
 
+        jobPage.selectJobTitleDropdown(jobTitle);
+
+        jobPage.selectJobCategoryDropdown(jobCategory);
+
+        jobPage.selectEmploymentStatus(employmentStatus);
+
+        jobPage.clickToButtonTerminate();
+
+        jobPage.enterTerminateDateTextbox(terminateDate);
+
+        jobPage.selectTerminateReasonDropdown(terminateReason);
+
+        jobPage.enterTerminateNoteTextArea(terminateNote);
+
+        jobPage.clickToTerminateSaveButton();
+        Assert.assertTrue(jobPage.isSucessMessageByText("Successfully Updated"));
+        jobPage.waitSpinnerIconInvisible();
+
+        jobPage.waitSpinnerIconInvisible();
+        jobPage.clickToActiveEmploymentButton();
+        Assert.assertTrue(jobPage.isSucessMessageByText("Successfully Updated"));
+        jobPage.waitSpinnerIconInvisible();
+
+        jobPage.clickToEmployeeNavigationByLabel("Salary");
+        salaryPage = PageGenerator.getSalaryPage(driver);
     }
 
     @Test
     public void Employee_08_Salary(){
+        salaryPage.clickToButtonByText("Add");
 
+        salaryPage.enterToSalaryComponentTextbox(salaryComponent);
+
+        salaryPage.selectPayGradeDropdown(payGrade);
+
+        salaryPage.selectPayFrequencyDropdown(payFrequency);
+
+        salaryPage.selectCurrencyDropdown(currency);
+
+        salaryPage.enterToAmountTextbox(amount);
+
+        salaryPage.clickToToggleButtonByText("Include Direct Deposit Details");
+
+        salaryPage.enterToAccountNumberTextbox(accountNumber);
+
+        salaryPage.selectAccountTypeDropdown(accountType);
+
+        salaryPage.enterToRoutingNumberTextbox(routingNumber);
+
+        salaryPage.enterToDirectDepositAmountTextbox(directDepositAmount);
+
+        salaryPage.clickToButtonByText("Save");
+        Assert.assertTrue(salaryPage.isSucessMessageByText("Successfully Saved"));
+        salaryPage.waitSpinnerIconInvisible();
+
+        salaryPage.clickToEmployeeNavigationByLabel("Report-to");
+        reportToPage = PageGenerator.getReportToPage(driver);
     }
 
     @Test
     public void Employee_09_Report(){
-
+        reportToPage.clickToEmployeeNavigationByLabel("Qualifications");
+        qualificationsPage = PageGenerator.getQualificationsPage(driver);
+        qualificationsPage.waitSpinnerIconInvisible();
     }
 
     @Test
     public void Employee_10_Qualification(){
+        qualificationsPage.clickToAddButtonByLabel("Work Experience");
 
+        qualificationsPage.enterToCompanyTextbox(company);
+
+        qualificationsPage.enterToJobTitle(jobTitle);
+
+        qualificationsPage.enterToWorkExperienceFromDateTextbox(expFromDate);
+
+        qualificationsPage.enterToWorkExperienceToDateTextbox(expToDate);
+
+        salaryPage.clickToButtonByText("Save");
+        Assert.assertTrue(salaryPage.isSucessMessageByText("Successfully Saved"));
+        salaryPage.waitSpinnerIconInvisible();
+
+        qualificationsPage.clickToAddButtonByLabel("Education");
+
+        qualificationsPage.selectLevelDropdown(level);
+
+        qualificationsPage.enterToInstituteTextbox(institute);
+
+        qualificationsPage.enterToMajorSpecializationTextbox(majorSpecialization);
+
+        qualificationsPage.enterToYearTextbox(yearEducation);
+
+        qualificationsPage.enterToGPAScoreTextbox(gpaScore);
+
+        qualificationsPage.enterToStartDateTextbox(startEducationDate);
+
+        qualificationsPage.enterToEndDateTextbox(endEducationDate);
+
+        salaryPage.clickToButtonByText("Save");
+        Assert.assertTrue(salaryPage.isSucessMessageByText("Successfully Saved"));
+        salaryPage.waitSpinnerIconInvisible();
     }
 
     @AfterClass

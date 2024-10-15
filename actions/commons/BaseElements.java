@@ -79,4 +79,12 @@ public class BaseElements extends BasePage {
     }
 
 
+    public void clickToToggleButtonByText(String label) {
+        clickToElementByJS(driver, BaseElementsPageUI.DYNAMIC_TOGGLE_BUTTON, label);
+    }
+
+    public void clickToAddButtonByLabel(String restParam) {
+        waitForElementVisible(driver, BaseElementsPageUI.DYNAMIC_ADD_BUTTON_BY_LABEL, restParam);
+        clickToElement(driver, BaseElementsPageUI.DYNAMIC_ADD_BUTTON_BY_LABEL, restParam);
+    }
 }
