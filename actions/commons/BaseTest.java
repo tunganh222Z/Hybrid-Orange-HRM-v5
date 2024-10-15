@@ -6,6 +6,7 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.time.Duration;
+import java.util.Random;
 
 public class BaseTest {
     WebDriver driver;
@@ -29,5 +30,11 @@ public class BaseTest {
         driver.manage().window().maximize();
         driver.get(url);
         return driver;
+    }
+
+    protected String getRandomEmail (String email){
+        Random rand = new Random();
+        int x = rand.nextInt(1,9999);
+        return email + x + "@gmail.com";
     }
 }
