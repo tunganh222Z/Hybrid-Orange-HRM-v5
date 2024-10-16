@@ -1,4 +1,4 @@
-package PageUIs;
+package PageUIs.pim;
 
 public class BaseElementsPageUI {
     public static final String UPLOAD_FILE_TYPE = "";

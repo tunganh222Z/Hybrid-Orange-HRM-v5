@@ -1,6 +1,6 @@
-package pageObjects;
+package pageObjects.pim;
 
-import PageUIs.JobPageUI;
+import PageUIs.pim.JobPageUI;
 import org.openqa.selenium.WebDriver;
 
 public class JobPageObject extends EmployeeNavigationSidebarPageObject {

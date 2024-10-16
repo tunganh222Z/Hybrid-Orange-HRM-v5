@@ -1,6 +1,6 @@
-package pageObjects;
+package pageObjects.pim;
 
-import PageUIs.SalaryPageUI;
+import PageUIs.pim.SalaryPageUI;
 import org.openqa.selenium.WebDriver;
 
 public class SalaryPageObject extends EmployeeNavigationSidebarPageObject {

@@ -1,6 +1,5 @@
-package pageObjects;
+package pageObjects.pim;
 
-import commons.BasePage;
 import org.openqa.selenium.WebDriver;
 
 public class ReportToPageObject extends EmployeeNavigationSidebarPageObject {

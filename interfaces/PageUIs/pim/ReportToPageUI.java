@@ -1,4 +1,4 @@
-package PageUIs;
+package PageUIs.pim;
 
 public class ReportToPageUI {
 }

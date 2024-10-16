@@ -1,4 +1,4 @@
-package PageUIs;
+package PageUIs.pim;
 
 public class ContactDetailsPageUI {
     public static final String STREET_1_TEXTBOX = "xpath=//div[string()='Street 1']//input";

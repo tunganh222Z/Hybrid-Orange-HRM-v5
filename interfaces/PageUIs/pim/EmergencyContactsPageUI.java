@@ -1,4 +1,4 @@
-package PageUIs;
+package PageUIs.pim;
 
 import commons.BaseElements;
 import org.openqa.selenium.WebDriver;

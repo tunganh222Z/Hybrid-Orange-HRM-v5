@@ -1,6 +1,5 @@
 package pageObjects;
 
-import PageUIs.BaseElementsPageUI;
 import PageUIs.MainMenuPageUI;
 import commons.BaseElements;
 import org.openqa.selenium.WebDriver;

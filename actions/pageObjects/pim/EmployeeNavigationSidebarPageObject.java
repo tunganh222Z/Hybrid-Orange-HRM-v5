@@ -1,10 +1,8 @@
-package pageObjects;
+package pageObjects.pim;
 
-import PageUIs.BaseElementsPageUI;
-import PageUIs.EmployeeNavigationSidebarPageUI;
-import commons.BaseElements;
-import commons.BasePage;
+import PageUIs.pim.EmployeeNavigationSidebarPageUI;
 import org.openqa.selenium.WebDriver;
+import pageObjects.MainMenuPageObject;
 
 public class EmployeeNavigationSidebarPageObject extends MainMenuPageObject {
     WebDriver driver;

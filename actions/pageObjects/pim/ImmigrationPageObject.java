@@ -1,6 +1,6 @@
-package pageObjects;
+package pageObjects.pim;
 
-import PageUIs.ImmigrationPageUI;
+import PageUIs.pim.ImmigrationPageUI;
 import org.openqa.selenium.WebDriver;
 
 public class ImmigrationPageObject extends EmployeeNavigationSidebarPageObject {

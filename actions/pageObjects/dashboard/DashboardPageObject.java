@@ -1,8 +1,7 @@
-package pageObjects;
+package pageObjects.dashboard;
 
-import commons.BaseElements;
-import commons.BasePage;
 import org.openqa.selenium.WebDriver;
+import pageObjects.MainMenuPageObject;
 
 public class DashboardPageObject extends MainMenuPageObject {
     WebDriver driver;

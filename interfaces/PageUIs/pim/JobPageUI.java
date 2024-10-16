@@ -1,4 +1,4 @@
-package PageUIs;
+package PageUIs.pim;
 
 public class JobPageUI {
     public static final String JOINED_DATE_TEXTBOX = "xpath=//div[string()='Joined Date']//input";

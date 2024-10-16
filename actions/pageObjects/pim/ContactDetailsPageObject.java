@@ -1,7 +1,6 @@
-package pageObjects;
+package pageObjects.pim;
 
-import PageUIs.ContactDetailsPageUI;
-import commons.BaseElements;
+import PageUIs.pim.ContactDetailsPageUI;
 import org.openqa.selenium.WebDriver;
 
 public class ContactDetailsPageObject extends EmployeeNavigationSidebarPageObject {

@@ -1,10 +1,9 @@
-package pageObjects;
+package pageObjects.pim;
 
-import PageUIs.EmployeeListPageUI;
-import commons.BaseElements;
-import commons.BasePage;
+import PageUIs.pim.EmployeeListPageUI;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import pageObjects.MainMenuPageObject;
 
 import java.util.List;
 

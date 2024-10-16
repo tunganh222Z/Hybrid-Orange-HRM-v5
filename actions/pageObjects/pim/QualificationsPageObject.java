@@ -1,7 +1,6 @@
-package pageObjects;
+package pageObjects.pim;
 
-import PageUIs.QualificationsPageUI;
-import commons.BasePage;
+import PageUIs.pim.QualificationsPageUI;
 import org.openqa.selenium.WebDriver;
 
 public class QualificationsPageObject extends EmployeeNavigationSidebarPageObject {

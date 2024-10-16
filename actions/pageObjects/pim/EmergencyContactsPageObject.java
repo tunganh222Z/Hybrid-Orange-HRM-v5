@@ -1,8 +1,6 @@
-package pageObjects;
+package pageObjects.pim;
 
-import PageUIs.BaseElementsPageUI;
-import PageUIs.EmergencyContactsPageUI;
-import commons.BaseElements;
+import PageUIs.pim.EmergencyContactsPageUI;
 import org.openqa.selenium.WebDriver;
 
 public class EmergencyContactsPageObject extends EmployeeNavigationSidebarPageObject {

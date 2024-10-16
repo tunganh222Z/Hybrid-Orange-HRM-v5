@@ -1,8 +1,12 @@
 package commons;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.devtools.v85.page.Page;
 import pageObjects.*;
+import pageObjects.admin.EditJobPageObject;
+import pageObjects.admin.JobTitlePageObject;
+import pageObjects.admin.UserManagementPageObject;
+import pageObjects.dashboard.DashboardPageObject;
+import pageObjects.pim.*;
 
 public class PageGenerator {
     WebDriver driver;
@@ -60,5 +64,17 @@ public class PageGenerator {
 
     public static QualificationsPageObject getQualificationsPage(WebDriver driver) {
         return new QualificationsPageObject(driver);
+    }
+
+    public static EditJobPageObject getEditJobPage(WebDriver driver){
+        return new EditJobPageObject(driver);
+    }
+
+    public static JobTitlePageObject getJobTitlePage(WebDriver driver){
+        return new JobTitlePageObject(driver);
+    }
+
+    public static UserManagementPageObject getUserManagementPage(WebDriver driver) {
+        return new UserManagementPageObject(driver);
     }
 }

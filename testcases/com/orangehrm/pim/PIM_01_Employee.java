@@ -12,6 +12,8 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pageObjects.*;
+import pageObjects.dashboard.DashboardPageObject;
+import pageObjects.pim.*;
 
 public class PIM_01_Employee extends BaseTest {
     private static final Logger log = LoggerFactory.getLogger(PIM_01_Employee.class);
@@ -41,7 +43,7 @@ public class PIM_01_Employee extends BaseTest {
     @Parameters ({"url","browser"})
     @BeforeClass
     public void beforeClass(String url, String browserName){
-        driver = getBrowserDriver(browserName, url);
+
         firstName = "Tung";
         lastName = "Anh";
         driverLicenseNumber ="DL123486784";
@@ -103,6 +105,7 @@ public class PIM_01_Employee extends BaseTest {
         expFromDate = "2023-11-10";
         expToDate = "2024-04-10";
 
+        driver = getBrowserDriver(browserName, url);
         loginPage = PageGenerator.getLoginPage(driver);
 
         loginPage.enterToTextBoxByName("username", GlobalConstant.ADMIN_ID);

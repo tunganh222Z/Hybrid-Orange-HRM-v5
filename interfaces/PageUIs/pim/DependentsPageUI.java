@@ -1,4 +1,4 @@
-package PageUIs;
+package PageUIs.pim;
 
 public class DependentsPageUI {
     public static final String NAME_TEXTBOX = "xpath=//div[string()='Name']//input";

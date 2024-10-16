@@ -1,6 +1,6 @@
-package pageObjects;
+package pageObjects.pim;
 
-import PageUIs.PersonalDetailsPageUI;
+import PageUIs.pim.PersonalDetailsPageUI;
 import org.openqa.selenium.WebDriver;
 
 public class PersonalDetailsPageObject extends EmployeeNavigationSidebarPageObject {

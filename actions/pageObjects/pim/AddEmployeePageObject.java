@@ -1,7 +1,5 @@
-package pageObjects;
+package pageObjects.pim;
 
-import PageUIs.AddEmployeePageUI;
-import PageUIs.BaseElementsPageUI;
 import commons.BaseElements;
 import org.openqa.selenium.WebDriver;
 

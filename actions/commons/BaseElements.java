@@ -1,10 +1,7 @@
 package commons;
 
-import PageUIs.BaseElementsPageUI;
+import PageUIs.pim.BaseElementsPageUI;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-
-import java.util.List;
 
 public class BaseElements extends BasePage {
     WebDriver driver;

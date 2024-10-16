@@ -1,4 +1,4 @@
-package PageUIs;
+package PageUIs.pim;
 
 public class QualificationsPageUI {
     public static final String COMPANY_TEXTBOX = "xpath=//div[string()='Company']//input";

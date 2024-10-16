@@ -1,4 +1,4 @@
-package PageUIs;
+package PageUIs.pim;
 
 public class ImmigrationPageUI {
     public static final String NUMBER_TEXTBOX = "xpath=//div[string()='Number']//input";
