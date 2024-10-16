@@ -32,9 +32,10 @@ public class BaseTest {
         return driver;
     }
 
-    protected String getRandomEmail (String email){
+    protected String getRandom(){
         Random rand = new Random();
         int x = rand.nextInt(1,9999);
-        return email + x + "@gmail.com";
+        return Integer.toString(x);
     }
+
 }

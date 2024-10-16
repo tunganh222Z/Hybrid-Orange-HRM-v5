@@ -84,4 +84,8 @@ public class BaseElements extends BasePage {
         waitForElementVisible(driver, BaseElementsPageUI.DYNAMIC_ADD_BUTTON_BY_LABEL, restParam);
         clickToElement(driver, BaseElementsPageUI.DYNAMIC_ADD_BUTTON_BY_LABEL, restParam);
     }
+
+    public void clickToTopBarDropdownByText(String name, String expectedOption) {
+        selectItemInCustomDropdown(driver, BaseElementsPageUI.DYNAMIC_TOP_BAR_DROPDOWN_BY_NAME, BaseElementsPageUI.DYNAMIC_TOP_BAR_DROPDOWN_OPTIONS_BY_NAME,expectedOption, name);
+    }
 }

@@ -17,4 +17,6 @@ public class BaseElementsPageUI {
 
     public static final String DYNAMIC_TOGGLE_BUTTON = "xpath=//div[string()='%s']//input";
     public static final String DYNAMIC_ADD_BUTTON_BY_LABEL = "xpath=//h6[text()='%s']//parent::div//button[contains(string(),'Add')]";
+    public static final String DYNAMIC_TOP_BAR_DROPDOWN_BY_NAME = "xpath=//li[contains(string(),'%s')]";
+    public static final String DYNAMIC_TOP_BAR_DROPDOWN_OPTIONS_BY_NAME = "xpath=//li[contains(string(),'%s')]//ul/li/a";
 }

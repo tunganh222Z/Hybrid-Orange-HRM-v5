@@ -60,8 +60,8 @@ public class PIM_01_Employee extends BaseTest {
         home = "0376263893";
         mobile = "07373294902";
         work = "099384892-";
-        workEmail = getRandomEmail("workEmail");
-        otherEmail = getRandomEmail("otherEmail");
+        workEmail = "workemail" + getRandom() + "@gmail.com";
+        otherEmail = "otherEmail" + getRandom() +"@gmail.com";
         country = "Viet Nam";
         emergencyName = "S o S";
         emergencyRelationship = " EC O EC";
