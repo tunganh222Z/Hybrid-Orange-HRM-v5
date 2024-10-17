@@ -34,7 +34,7 @@ public class BaseTest {
 
     protected String getRandom(){
         Random rand = new Random();
-        int x = rand.nextInt(1,9999);
+        int x = rand.nextInt(1,999999);
         return Integer.toString(x);
     }
 

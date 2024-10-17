@@ -54,28 +54,34 @@ public class Admin_01_Job_Title extends BaseTest {
     }
 
     @Test
-    public void Admin_Add_Job_Title_With_Empty_Data(){
+    public void TC_01_Admin_Add_Job_Title_With_Empty_Data(){
         jobTitlePage.clickToAddButtonByLabel("Job Titles");
         editJobPage = PageGenerator.getEditJobPage(driver);
 
-        editJobPage.clickToTopBarButtonByText("Save");
+        editJobPage.clickToSaveButton();
 
         Assert.assertEquals(editJobPage.getErrorMsg(), "Required");
     }
 
 
     @Test
-    public void Admin_Add_Job_Title(){
+    public void TC_02_Admin_Add_Job_Title(){
+        editJobPage = PageGenerator.getEditJobPage(driver);
+//        editJobPage.clickToTopBarDropdownByText("Job", "Job Titles");
+//        jobTitlePage.clickToAddButtonByLabel("Job Titles");
+//        editJobPage = PageGenerator.getEditJobPage(driver);
+
         editJobPage.enterToJobTitleTextbox(jobTitle);
 
-        editJobPage.clickToTopBarButtonByText("Save");
+        editJobPage.clickToSaveButton();
         editJobPage.isSucessMessageByText("Successfully Saved");
         editJobPage.waitSpinnerIconInvisible();
 
         editJobPage.openModuleByText("PIM");
         employeeListPage = PageGenerator.getEmployeeListPageObject(driver);
+        employeeListPage.waitSpinnerIconInvisible();
 
-        employeeListPage.entertoTextBoxToSearch("Employee ID", employeeID);
+        employeeListPage.entertoTextBoxToSearch("Employee Id", employeeID);
         employeeListPage.clickToButtonByText("Search");
         employeeListPage.waitSpinnerIconInvisible();
 
@@ -83,6 +89,7 @@ public class Admin_01_Job_Title extends BaseTest {
 
         personalDetailsPage.clickToEmployeeNavigationByLabel("Job");
         jobPage = PageGenerator.getJobPage(driver);
+        jobPage.waitSpinnerIconInvisible();
 
         jobPage.selectJobTitleDropdown(jobTitle);
 
@@ -100,7 +107,7 @@ public class Admin_01_Job_Title extends BaseTest {
     }
 
     @Test
-    public void Admin_Add_Job_Title_With_Existing_Data(){
+    public void TC_03_Admin_Add_Job_Title_With_Existing_Data(){
         jobTitlePage.clickToAddButtonByLabel("Job Titles");
         editJobPage = PageGenerator.getEditJobPage(driver);
 
@@ -114,22 +121,44 @@ public class Admin_01_Job_Title extends BaseTest {
 
 
     @Test
-    public void Admin_Edit_Job_Title(){
+    public void TC_04_Admin_Edit_Job_Title(){
         editJobPage = jobTitlePage.clickToEditButtonByJobTitles(jobTitle);
         editJobPage.waitSpinnerIconInvisible();
 
-        editJobPage.enterToJobDescriptionTextarea("");
+        editJobPage.enterToJobDescriptionTextarea("Job is hard" + jobTitle);
+        editJobPage.clickToSaveButton();
+        editJobPage.waitSpinnerIconInvisible();
 
+        jobTitlePage = PageGenerator.getJobTitlePage(driver);
+        jobTitlePage.waitSpinnerIconInvisible();
 
+        Assert.assertEquals(jobTitlePage.getDescriptionText(jobTitle), "Job is hard" + jobTitle);
     }
 
     @Test
-    public void Admin_Delete_Job_Title(){
+    public void TC_05_Admin_Delete_Job_Title(){
+        jobTitlePage.clicklToDeleteButtonByJobTitles(jobTitle);
+        jobTitlePage.clickToYesDeletePopUp();
 
+        jobTitlePage.isSucessMessageByText("Successfully Deleted");
+        jobTitlePage.waitSpinnerIconInvisible();
+
+        editJobPage.openModuleByText("PIM");
+        employeeListPage = PageGenerator.getEmployeeListPageObject(driver);
+
+        employeeListPage.entertoTextBoxToSearch("Employee Id", employeeID);
+        employeeListPage.clickToButtonByText("Search");
+        employeeListPage.waitSpinnerIconInvisible();
+
+        personalDetailsPage = employeeListPage.clickToEditButtonByEmployeeId(employeeID);
+
+        personalDetailsPage.clickToEmployeeNavigationByLabel("Job");
+        jobPage = PageGenerator.getJobPage(driver);
+
+        //Assert.assertEquals(jobPage.getSelectedJobInDropdown(), jobTitle + " (Deleted)");
     }
 
     @AfterClass
     public void afterClass(){
-
     }
 }

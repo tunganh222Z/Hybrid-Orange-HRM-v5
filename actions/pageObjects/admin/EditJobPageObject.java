@@ -16,12 +16,18 @@ public class EditJobPageObject extends JobTitlePageObject{
     }
 
     public void enterToJobTitleTextbox(String jobTitle) {
-        waitForElementVisible();
-        sendkeyToElement();
+//        sendkeyToElementByJS(driver, EditJobPageUI.JOB_TITLE_TEXTBOX, jobTitle);
+        waitForElementVisible(driver, EditJobPageUI.JOB_TITLE_TEXTBOX);
+        sendkeyToElement(driver, EditJobPageUI.JOB_TITLE_TEXTBOX, jobTitle);
     }
 
-    public void enterToJobDescriptionTextarea(String s) {
+    public void enterToJobDescriptionTextarea(String description) {
         waitForElementVisible(driver, EditJobPageUI.JOB_DESCRIPTION_TEXTAREA);
-        sendkeyToElement(driver, EditJobPageUI.JOB_DESCRIPTION_TEXTAREA, );
+        sendkeyToElement(driver, EditJobPageUI.JOB_DESCRIPTION_TEXTAREA, description);
+    }
+
+    public void clickToSaveButton() {
+        waitForElementVisible(driver, EditJobPageUI.SAVE_BUTTON);
+        clickToElement(driver, EditJobPageUI.SAVE_BUTTON);
     }
 }

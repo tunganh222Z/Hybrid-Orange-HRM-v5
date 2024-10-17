@@ -55,4 +55,9 @@ public class JobPageObject extends EmployeeNavigationSidebarPageObject {
         waitForElementVisible(driver, JobPageUI.TERMINATE_SAVE_BUTTON );
         clickToElement(driver, JobPageUI.TERMINATE_SAVE_BUTTON);
     }
+
+    public String getSelectedJobInDropdown() {
+        waitForElementVisible(driver, JobPageUI.FIRST_SELECTED_DROPDOWN_JOB);
+        return getWebElementAttribute(driver, JobPageUI.FIRST_SELECTED_DROPDOWN_JOB, "value");
+    }
 }

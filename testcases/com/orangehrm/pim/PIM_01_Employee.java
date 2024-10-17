@@ -122,8 +122,6 @@ public class PIM_01_Employee extends BaseTest {
 
     @Test
     public void Employee_01_Add_New(){
-        System.out.println(workEmail);
-
         employeeListPage.clickToButtonByText("Add");
         employeeListPage.waitSpinnerIconInvisible();
         addEmployeePage = PageGenerator.getAddEmployeePageObject(driver);

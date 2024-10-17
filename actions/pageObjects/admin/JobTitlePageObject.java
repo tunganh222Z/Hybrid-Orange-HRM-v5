@@ -17,4 +17,19 @@ public class JobTitlePageObject extends MainMenuPageObject {
         clickToElement(driver, JobTitlePageUI.EDIT_BUTTON_BY_JOB_TITLE, jobTitles);
         return new EditJobPageObject(driver);
     }
+
+    public String getDescriptionText(String jobTitles) {
+        waitForElementVisible(driver, JobTitlePageUI.DESCRIPTION_BY_JOB_TITLE, jobTitles);
+        return getWebElementText(driver, JobTitlePageUI.DESCRIPTION_BY_JOB_TITLE, jobTitles);
+    }
+
+    public void clicklToDeleteButtonByJobTitles(String jobTitle) {
+        waitForElementVisible(driver, JobTitlePageUI.DELETE_BUTTON_BY_JOB_TITLES, jobTitle);
+        clickToElement(driver, JobTitlePageUI.DELETE_BUTTON_BY_JOB_TITLES, jobTitle);
+    }
+
+    public void clickToYesDeletePopUp() {
+        waitForElementVisible(driver, JobTitlePageUI.YES_BUTTON_IN_POPUP);
+        clickToElement(driver, JobTitlePageUI.YES_BUTTON_IN_POPUP);
+    }
 }

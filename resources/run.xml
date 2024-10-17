@@ -5,7 +5,7 @@
         <parameter name="browser" value="firefox"/>
         <parameter name="url" value="http://tunganh:90/orangehrmv5"/>
         <classes>
-            <class name="com.orangehrm.pim.PIM_01_Employee"/>
+            <class name="com.orangehrm.admin.Admin_01_Job_Title"/>
         </classes>
     </test>
 

@@ -15,4 +15,5 @@ public class JobPageUI {
     public static final String TERMINATE_REASON_DROPDOWN_OPTIONS = "xpath=//div[string()='Termination Reason']/parent::div//div[@role='option']";
     public static final String TERMINATE_BUTTON = "Xpath=//button[@title='Terminate Employment']";
     public static final String TERMINATE_SAVE_BUTTON = "xpath=//div[@class='oxd-dialog-container-default--inner']//button[contains(string(),'Save')]";
+    public static final String FIRST_SELECTED_DROPDOWN_JOB = "xpath=//div[string()='Job Title']/following-sibling::div//div[@class='oxd-select-text-input']";
 }
