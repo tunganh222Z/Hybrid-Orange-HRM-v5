@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import pageObjects.*;
 import pageObjects.admin.EditJobPageObject;
 import pageObjects.admin.JobTitlePageObject;
+import pageObjects.admin.PayGradesPageObject;
 import pageObjects.admin.UserManagementPageObject;
 import pageObjects.dashboard.DashboardPageObject;
 import pageObjects.pim.*;
@@ -76,5 +77,9 @@ public class PageGenerator {
 
     public static UserManagementPageObject getUserManagementPage(WebDriver driver) {
         return new UserManagementPageObject(driver);
+    }
+
+    public static PayGradesPageObject getPayGradesPage(WebDriver driver) {
+        return new PayGradesPageObject(driver);
     }
 }
