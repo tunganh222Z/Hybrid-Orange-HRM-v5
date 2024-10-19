@@ -10,10 +10,14 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pageObjects.LoginPageObject;
-import pageObjects.admin.AddPayGradePageObject;
-import pageObjects.admin.PayGradesPageObject;
+import pageObjects.admin.payGrades.AddPayGradePageObject;
+import pageObjects.admin.payGrades.EditPayGradePageObject;
+import pageObjects.admin.payGrades.PayGradesPageObject;
 import pageObjects.admin.UserManagementPageObject;
 import pageObjects.dashboard.DashboardPageObject;
+import pageObjects.pim.EmployeeListPageObject;
+import pageObjects.pim.PersonalDetailsPageObject;
+import pageObjects.pim.SalaryPageObject;
 
 public class Admin_02_Pay_Grade extends BaseTest {
     WebDriver driver;
@@ -22,6 +26,11 @@ public class Admin_02_Pay_Grade extends BaseTest {
     private UserManagementPageObject userManagementPage;
     private PayGradesPageObject payGradesPage;
     private AddPayGradePageObject addPayGrade;
+    private EmployeeListPageObject employeeListPage;
+    private PersonalDetailsPageObject personalDetailsPage;
+    private SalaryPageObject salaryPage;
+    private EditPayGradePageObject editPayGradePage;
+    private String minSalary, maximumSalary;
 
     @Parameters ({"browser", "url"})
     @BeforeClass
@@ -53,32 +62,99 @@ public class Admin_02_Pay_Grade extends BaseTest {
         addPayGrade = PageGenerator.getAddPayGradePage(driver);
         addPayGrade.clickToButtonByText("Save");
 
-        Assert.assertEquals(addPayGrade.getErrorMsg(), "");
+        Assert.assertEquals(addPayGrade.getErrorMsg("Name"), "Required");
     }
 
     @Test
-    public void TC_02_Admin_Add_PayGrade_With_Empty_Data(){
+    public void TC_02_Admin_Add_PayGrade_With_Valid_Data(){
         addPayGrade = PageGenerator.getAddPayGradePage(driver);
 
-        addPayGrade.enterToNameTextbox();
+        addPayGrade.enterToNameTextbox("");
 
         addPayGrade.clickToButtonByText("Save");
-
         addPayGrade.isSucessMessageByText("Successfully Saved");
         addPayGrade.waitSpinnerIconInvisible();
 
-        addPayGrade.clickToAddButtonByLabel("Currencies");
+        editPayGradePage = PageGenerator.getEditPayGradePage(driver);
+        editPayGradePage.waitSpinnerIconInvisible();
+    }
 
-        addPayGrade.selectCurrencyDropdown("");
-        addPayGrade.enterToMiniSalary("");
-        addPayGrade.enterToMaximumSalary("");
+    @Test
+    public void TC_03_Admin_Add_PayGrade_Add_Currencies(){
+        editPayGradePage.clickToAddButtonByLabel("Currencies");
 
-        addPayGrade.clickToSaveButtonAddCurrency();
-        addPayGrade.waitSpinnerIconInvisible();
-        addPayGrade.isSucessMessageByText("Successfully Saved");
+        editPayGradePage.selectCurrencyDropdown("");
+        editPayGradePage.enterToMinimumSalary("");
+        editPayGradePage.enterToMaximumSalary("");
 
+        editPayGradePage.clickToSaveButtonAddCurrency();
+        editPayGradePage.waitSpinnerIconInvisible();
+        editPayGradePage.isSucessMessageByText("Successfully Saved");
 
+        editPayGradePage.openModuleByText("PIM");
+        employeeListPage = PageGenerator.getEmployeeListPageObject(driver);
+        employeeListPage.waitSpinnerIconInvisible();
+    }
 
+    @Test
+    public void TC_04_Admin_Select_PayGrade(){
+        employeeListPage.entertoTextBoxToSearch("", "");
+
+        employeeListPage.clickToButtonByText("");
+        employeeListPage.waitSpinnerIconInvisible();
+
+        employeeListPage.clickToEditButtonByEmployeeId("");
+        personalDetailsPage = PageGenerator.getPersonalDetailsPageObject(driver);
+        personalDetailsPage.waitSpinnerIconInvisible();
+
+        personalDetailsPage.clickToEmployeeNavigationByLabel("Salary");
+        salaryPage = PageGenerator.getSalaryPage(driver);
+        salaryPage.waitSpinnerIconInvisible();
+
+        salaryPage.clickToAddButtonByLabel("");
+
+        salaryPage.selectPayGradeDropdown("");
+        salaryPage.waitSpinnerIconInvisible();
+
+        salaryPage.enterToSalaryComponentTextbox("");
+
+        salaryPage.selectCurrencyDropdown("");
+        Assert.assertEquals(salaryPage.getMinMaxAmountText(), "Min: " + minSalary +" - Max: " + maximumSalary);
+
+        salaryPage.enterToAmountTextbox("");
+
+        salaryPage.clickToButtonByText("Save");
+
+        salaryPage.isSucessMessageByText("Successfully Saved");
+
+        salaryPage.waitSpinnerIconInvisible();
+
+        salaryPage.openModuleByText("Admin");
+        userManagementPage = PageGenerator.getUserManagementPage(driver);
+    }
+
+    @Test
+    public void TC_05_Admin_PayGrade_Edit_PayGrade(){
+        userManagementPage.clickToTopBarDropdownByText("Job", "Pay Grades");
+        payGradesPage.clickToEditButtonByName("");
+
+        editPayGradePage.enterToPayGradeName("");
+
+        editPayGradePage.clickToButtonByText("Save");
+        editPayGradePage.isSucessMessageByText("Successfully Saved");
+        editPayGradePage.waitSpinnerIconInvisible();
+
+        editPayGradePage.clickToButtonByText("Cancel");
+        payGradesPage = PageGenerator.getPayGradesPage(driver);
+    }
+
+    @Test
+    public void TC_06_Admin_PayGrade_Delete_PayGrade(){
+        payGradesPage.clickToDeleteButtonByName("");
+
+        payGradesPage.clickToYesDeletePopUp();
+
+        payGradesPage.isPayGradeDeleted("");
     }
 
     @AfterClass

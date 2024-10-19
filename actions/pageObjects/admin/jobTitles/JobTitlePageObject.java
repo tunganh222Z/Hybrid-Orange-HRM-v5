@@ -1,6 +1,6 @@
-package pageObjects.admin;
+package pageObjects.admin.jobTitles;
 
-import PageUIs.admin.JobTitlePageUI;
+import PageUIs.admin.jobTitles.JobTitlePageUI;
 import org.openqa.selenium.WebDriver;
 import pageObjects.MainMenuPageObject;
 
@@ -28,8 +28,4 @@ public class JobTitlePageObject extends MainMenuPageObject {
         clickToElement(driver, JobTitlePageUI.DELETE_BUTTON_BY_JOB_TITLES, jobTitle);
     }
 
-    public void clickToYesDeletePopUp() {
-        waitForElementVisible(driver, JobTitlePageUI.YES_BUTTON_IN_POPUP);
-        clickToElement(driver, JobTitlePageUI.YES_BUTTON_IN_POPUP);
-    }
 }

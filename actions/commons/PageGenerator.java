@@ -2,9 +2,11 @@ package commons;
 
 import org.openqa.selenium.WebDriver;
 import pageObjects.*;
-import pageObjects.admin.EditJobPageObject;
-import pageObjects.admin.JobTitlePageObject;
-import pageObjects.admin.PayGradesPageObject;
+import pageObjects.admin.jobTitles.EditJobPageObject;
+import pageObjects.admin.jobTitles.JobTitlePageObject;
+import pageObjects.admin.payGrades.AddPayGradePageObject;
+import pageObjects.admin.payGrades.EditPayGradePageObject;
+import pageObjects.admin.payGrades.PayGradesPageObject;
 import pageObjects.admin.UserManagementPageObject;
 import pageObjects.dashboard.DashboardPageObject;
 import pageObjects.pim.*;
@@ -81,5 +83,13 @@ public class PageGenerator {
 
     public static PayGradesPageObject getPayGradesPage(WebDriver driver) {
         return new PayGradesPageObject(driver);
+    }
+
+    public static EditPayGradePageObject getEditPayGradePage(WebDriver driver) {
+        return new EditPayGradePageObject(driver);
+    }
+
+    public static AddPayGradePageObject getAddPayGradePage(WebDriver driver) {
+        return new AddPayGradePageObject(driver);
     }
 }

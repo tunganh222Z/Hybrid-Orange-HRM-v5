@@ -10,8 +10,8 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pageObjects.LoginPageObject;
-import pageObjects.admin.EditJobPageObject;
-import pageObjects.admin.JobTitlePageObject;
+import pageObjects.admin.jobTitles.EditJobPageObject;
+import pageObjects.admin.jobTitles.JobTitlePageObject;
 import pageObjects.admin.UserManagementPageObject;
 import pageObjects.dashboard.DashboardPageObject;
 import pageObjects.pim.EmployeeListPageObject;
@@ -60,13 +60,13 @@ public class Admin_01_Job_Title extends BaseTest {
 
         editJobPage.clickToSaveButton();
 
-        Assert.assertEquals(editJobPage.getErrorMsg(), "Required");
+        Assert.assertEquals(editJobPage.getErrorMsg("Job Title"), "Required");
     }
 
 
     @Test
     public void TC_02_Admin_Add_Job_Title(){
-        editJobPage = PageGenerator.getEditJobPage(driver);
+//        editJobPage = PageGenerator.getEditJobPage(driver);
 //        editJobPage.clickToTopBarDropdownByText("Job", "Job Titles");
 //        jobTitlePage.clickToAddButtonByLabel("Job Titles");
 //        editJobPage = PageGenerator.getEditJobPage(driver);
@@ -112,7 +112,7 @@ public class Admin_01_Job_Title extends BaseTest {
         editJobPage = PageGenerator.getEditJobPage(driver);
 
         editJobPage.enterToJobTitleTextbox(jobTitle);
-        Assert.assertEquals(editJobPage.getErrorMsg(), "Already exists");
+        Assert.assertEquals(editJobPage.getErrorMsg("Job Title"), "Already exists");
 
         editJobPage.clickToButtonByText("Cancel");
         jobTitlePage = PageGenerator.getJobTitlePage(driver);

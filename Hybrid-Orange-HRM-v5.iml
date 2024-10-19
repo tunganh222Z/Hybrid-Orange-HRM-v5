@@ -12,5 +12,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="libSelenium" level="project" />
     <orderEntry type="library" name="sourceDocs" level="project" />
+    <orderEntry type="library" name="datafaker-2.4.0" level="project" />
   </component>
 </module>

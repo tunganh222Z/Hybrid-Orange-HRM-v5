@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <suite parallel = "false" name="NopComerce">
 
-    <test name="Run on Firefox">
+    <test name="Run on Firefox" preserve-order="true">
         <parameter name="browser" value="firefox"/>
         <parameter name="url" value="http://tunganh:90/orangehrmv5"/>
         <classes>

@@ -15,4 +15,5 @@ public class SalaryPageUI {
     public static final String CURRENCY_DROPDOWN_OPTIONS = "xpath=//div[string()='Currency']/parent::div//div[@role='option']";
     public static final String ACCOUNT_TYPE_DROPDOWN = "xpath=//div[string()='Account Type']/parent::div//div[@class='oxd-select-wrapper']";
     public static final String ACCOUNT_TYPE_DROPDOWN_OPTIONS = "xpath=//div[string()='Account Type']/parent::div//div[@role='option']";
+    public static final String HINT_MIN_MAX_AMOUNT_TEXT = "xpath=//p[@class='oxd-text oxd-text--p orangehrm-input-hint']";
 }

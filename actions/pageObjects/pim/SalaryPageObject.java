@@ -4,6 +4,7 @@ import PageUIs.pim.SalaryPageUI;
 import org.openqa.selenium.WebDriver;
 
 public class SalaryPageObject extends EmployeeNavigationSidebarPageObject {
+
     WebDriver driver;
     public SalaryPageObject(WebDriver driver){
         super(driver);
@@ -49,5 +50,10 @@ public class SalaryPageObject extends EmployeeNavigationSidebarPageObject {
     public void enterToDirectDepositAmountTextbox(String keyToSend) {
         waitForElementVisible(driver, SalaryPageUI.DIRECT_DEPOSIT_AMOUNT_TEXTBOX);
         sendkeyToElement(driver, SalaryPageUI.DIRECT_DEPOSIT_AMOUNT_TEXTBOX, keyToSend);
+    }
+
+    public String getMinMaxAmountText(){
+        waitForElementVisible(driver, SalaryPageUI.HINT_MIN_MAX_AMOUNT_TEXT);
+        return getWebElementText(driver, SalaryPageUI.HINT_MIN_MAX_AMOUNT_TEXT);
     }
 }

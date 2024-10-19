@@ -88,4 +88,14 @@ public class BaseElements extends BasePage {
     public void clickToTopBarDropdownByText(String name, String expectedOption) {
         selectItemInCustomDropdown(driver, BaseElementsPageUI.DYNAMIC_TOP_BAR_DROPDOWN_BY_NAME, BaseElementsPageUI.DYNAMIC_TOP_BAR_DROPDOWN_OPTIONS_BY_NAME,expectedOption, name);
     }
+
+    public void clickToYesDeletePopUp() {
+        waitForElementVisible(driver, BaseElementsPageUI.YES_BUTTON_IN_POPUP);
+        clickToElement(driver, BaseElementsPageUI.YES_BUTTON_IN_POPUP);
+    }
+
+    public String getErrorMsg(String label) {
+        waitForElementVisible(driver, BaseElementsPageUI.REQUIRED_MESSAGE_BY_TEXTBOX_LABEL);
+        return getWebElementText(driver, BaseElementsPageUI.REQUIRED_MESSAGE_BY_TEXTBOX_LABEL);
+    }
 }
