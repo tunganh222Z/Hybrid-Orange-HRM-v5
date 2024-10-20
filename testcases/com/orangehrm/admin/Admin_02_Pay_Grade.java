@@ -30,11 +30,14 @@ public class Admin_02_Pay_Grade extends BaseTest {
     private PersonalDetailsPageObject personalDetailsPage;
     private SalaryPageObject salaryPage;
     private EditPayGradePageObject editPayGradePage;
-    private String minSalary, maximumSalary;
+    private String minSalary, maximumSalary, payGradeName;
 
     @Parameters ({"browser", "url"})
     @BeforeClass
     public void beforeClass(String browserName, String url){
+        minSalary = "16000";
+        maximumSalary = "25000";
+        payGradeName = "payGrade" + getRandom();
         driver = getBrowserDriver(browserName, url);
         loginPage = PageGenerator.getLoginPage(driver);
 
@@ -69,7 +72,7 @@ public class Admin_02_Pay_Grade extends BaseTest {
     public void TC_02_Admin_Add_PayGrade_With_Valid_Data(){
         addPayGrade = PageGenerator.getAddPayGradePage(driver);
 
-        addPayGrade.enterToNameTextbox("");
+        addPayGrade.enterToNameTextbox(payGradeName);
 
         addPayGrade.clickToButtonByText("Save");
         addPayGrade.isSucessMessageByText("Successfully Saved");
@@ -82,14 +85,15 @@ public class Admin_02_Pay_Grade extends BaseTest {
     @Test
     public void TC_03_Admin_Add_PayGrade_Add_Currencies(){
         editPayGradePage.clickToAddButtonByLabel("Currencies");
+        editPayGradePage.waitSpinnerIconInvisible();
 
-        editPayGradePage.selectCurrencyDropdown("");
-        editPayGradePage.enterToMinimumSalary("");
-        editPayGradePage.enterToMaximumSalary("");
+        editPayGradePage.selectCurrencyDropdown("USD - United States Dollar");
+        editPayGradePage.enterToMinimumSalary(minSalary);
+        editPayGradePage.enterToMaximumSalary(maximumSalary);
 
         editPayGradePage.clickToSaveButtonAddCurrency();
-        editPayGradePage.waitSpinnerIconInvisible();
         editPayGradePage.isSucessMessageByText("Successfully Saved");
+        editPayGradePage.waitSpinnerIconInvisible();
 
         editPayGradePage.openModuleByText("PIM");
         employeeListPage = PageGenerator.getEmployeeListPageObject(driver);
@@ -98,12 +102,12 @@ public class Admin_02_Pay_Grade extends BaseTest {
 
     @Test
     public void TC_04_Admin_Select_PayGrade(){
-        employeeListPage.entertoTextBoxToSearch("", "");
+        employeeListPage.entertoTextBoxToSearch("Employee Id", "0046");
 
-        employeeListPage.clickToButtonByText("");
+        employeeListPage.clickToButtonByText("Search");
         employeeListPage.waitSpinnerIconInvisible();
 
-        employeeListPage.clickToEditButtonByEmployeeId("");
+        employeeListPage.clickToEditButtonByEmployeeId("0046");
         personalDetailsPage = PageGenerator.getPersonalDetailsPageObject(driver);
         personalDetailsPage.waitSpinnerIconInvisible();
 
@@ -111,17 +115,17 @@ public class Admin_02_Pay_Grade extends BaseTest {
         salaryPage = PageGenerator.getSalaryPage(driver);
         salaryPage.waitSpinnerIconInvisible();
 
-        salaryPage.clickToAddButtonByLabel("");
+        salaryPage.clickToAddButtonByLabel("Assigned Salary Components");
 
-        salaryPage.selectPayGradeDropdown("");
+        salaryPage.selectPayGradeDropdown(payGradeName);
         salaryPage.waitSpinnerIconInvisible();
 
-        salaryPage.enterToSalaryComponentTextbox("");
+        salaryPage.enterToSalaryComponentTextbox("PayGrade Component testing");
 
-        salaryPage.selectCurrencyDropdown("");
+        salaryPage.selectCurrencyDropdown("United States Dollar");
         Assert.assertEquals(salaryPage.getMinMaxAmountText(), "Min: " + minSalary +" - Max: " + maximumSalary);
 
-        salaryPage.enterToAmountTextbox("");
+        salaryPage.enterToAmountTextbox("20000");
 
         salaryPage.clickToButtonByText("Save");
 
@@ -136,25 +140,29 @@ public class Admin_02_Pay_Grade extends BaseTest {
     @Test
     public void TC_05_Admin_PayGrade_Edit_PayGrade(){
         userManagementPage.clickToTopBarDropdownByText("Job", "Pay Grades");
-        payGradesPage.clickToEditButtonByName("");
 
-        editPayGradePage.enterToPayGradeName("");
-
-        editPayGradePage.clickToButtonByText("Save");
-        editPayGradePage.isSucessMessageByText("Successfully Saved");
+        payGradesPage.clickToEditButtonByName(payGradeName);
+        editPayGradePage = PageGenerator.getEditPayGradePage(driver);
         editPayGradePage.waitSpinnerIconInvisible();
 
+        editPayGradePage.enterToPayGradeName(" Edited");
+
+        editPayGradePage.clickToButtonByText("Save");
+        editPayGradePage.isSucessMessageByText("Successfully Updated");
+        editPayGradePage.waitSpinnerIconInvisible();
+
+        editPayGradePage.waitSpinnerIconInvisible();
         editPayGradePage.clickToButtonByText("Cancel");
         payGradesPage = PageGenerator.getPayGradesPage(driver);
     }
 
     @Test
     public void TC_06_Admin_PayGrade_Delete_PayGrade(){
-        payGradesPage.clickToDeleteButtonByName("");
+        payGradesPage.clickToDeleteButtonByName(payGradeName+" Edited");
 
         payGradesPage.clickToYesDeletePopUp();
 
-        payGradesPage.isPayGradeDeleted("");
+        payGradesPage.isPayGradeDeleted(payGradeName +" Edited");
     }
 
     @AfterClass

@@ -31,6 +31,7 @@ public class EditPayGradePageObject extends PayGradesPageObject {
 
     public void enterToPayGradeName(String keyToSend) {
         waitForElementVisible(driver, EditPayGradePageUI.EDIT_PAY_GRADE_NAME_TEXTBOX);
+        getWebElement(driver, EditPayGradePageUI.EDIT_PAY_GRADE_NAME_TEXTBOX).clear();
         sendkeyToElement(driver, EditPayGradePageUI.EDIT_PAY_GRADE_NAME_TEXTBOX, keyToSend);
     }
 }

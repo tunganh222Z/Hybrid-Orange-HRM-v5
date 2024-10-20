@@ -18,7 +18,9 @@ public class PayGradesPageObject extends MainMenuPageObject {
 
     public boolean isPayGradeDeleted(String expectedName) {
         boolean isOptionDeleted = true;
-        List<WebElement> listPayGradesName = getListWebElements(driver, PayGradesPageUI.RECORD_PAY_GRADE_NAMES);
+        List<WebElement> listElementColumnHeaderByText = getListWebElements(driver, PayGradesPageUI.COLUMN_HEADER_BY_TEXT, "Name");
+        int indexNameHeader = listElementColumnHeaderByText.size() + 1;
+        List<WebElement> listPayGradesName = getListWebElements(driver, PayGradesPageUI.RECORD_PAY_GRADE_NAMES,String.valueOf(indexNameHeader));
         for (WebElement name : listPayGradesName){
             if (name.getText().equals(expectedName)){
                 isOptionDeleted = false;

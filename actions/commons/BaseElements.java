@@ -95,7 +95,7 @@ public class BaseElements extends BasePage {
     }
 
     public String getErrorMsg(String label) {
-        waitForElementVisible(driver, BaseElementsPageUI.REQUIRED_MESSAGE_BY_TEXTBOX_LABEL);
-        return getWebElementText(driver, BaseElementsPageUI.REQUIRED_MESSAGE_BY_TEXTBOX_LABEL);
+        waitForElementVisible(driver, BaseElementsPageUI.REQUIRED_MESSAGE_BY_TEXTBOX_LABEL, label);
+        return getWebElementText(driver, BaseElementsPageUI.REQUIRED_MESSAGE_BY_TEXTBOX_LABEL, label);
     }
 }
