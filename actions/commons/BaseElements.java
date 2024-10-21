@@ -80,9 +80,9 @@ public class BaseElements extends BasePage {
         clickToElementByJS(driver, BaseElementsPageUI.DYNAMIC_TOGGLE_BUTTON, label);
     }
 
-    public void clickToAddButtonByLabel(String restParam) {
-        waitForElementVisible(driver, BaseElementsPageUI.DYNAMIC_ADD_BUTTON_BY_LABEL, restParam);
-        clickToElement(driver, BaseElementsPageUI.DYNAMIC_ADD_BUTTON_BY_LABEL, restParam);
+    public void clickToAddButtonByLabel(String label) {
+        waitForElementVisible(driver, BaseElementsPageUI.DYNAMIC_ADD_BUTTON_BY_LABEL, label);
+        clickToElement(driver, BaseElementsPageUI.DYNAMIC_ADD_BUTTON_BY_LABEL, label);
     }
 
     public void clickToTopBarDropdownByText(String name, String expectedOption) {
